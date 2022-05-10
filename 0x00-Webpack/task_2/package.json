@@ -1,5 +1,5 @@
 {
-  "name": "task_1",
+  "name": "task_2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "jquery": "^3.6.0",
-    "lodash": "^4.17.21"
+    "loadash": "^1.0.0"
   }
 }
