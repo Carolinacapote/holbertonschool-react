@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: "production", // "production" | "development" | "none"
+  mode: 'production',
   entry: './js/dashboard_main.js',
   output: {
     path: path.resolve(__dirname, 'public'),
