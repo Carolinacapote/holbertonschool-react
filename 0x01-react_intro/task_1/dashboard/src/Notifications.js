@@ -2,7 +2,7 @@ import React from 'react';
 import './Notifications.css';
 
 /**
- * 
+ * New funtion that add a div with className 'Notifications' to the root element
  */
 function Notifications() {
   return (
