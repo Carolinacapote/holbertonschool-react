@@ -36,6 +36,7 @@ hr {
 .App-footer { 
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 99vw;
   height: 80px;
   position: absolute;
