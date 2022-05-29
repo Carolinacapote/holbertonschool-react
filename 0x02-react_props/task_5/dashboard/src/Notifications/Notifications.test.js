@@ -25,3 +25,51 @@ describe('<notifications />', () => {
     expect(wrapper.find('div.menuItem')).toHaveLength(1);
   });
 });
+
+describe(" verify that Notifications renders correctly if you pass an empty array or if you do not pass the listNotifications property", () => {
+  beforeEach(() => {
+    listNotifications = [];
+  });
+
+  it("check output with empty listNotifications", () => {
+    const wrapper = shallow(
+      <Notifications displayDrawer listNotifications={ listNotifications } />
+    );
+    expect(wrapper.find("NotificationItem").html()).toEqual(
+      '<li data-notification-type="default">No new notification for now</li>'
+    );
+  });
+
+  it("chck output without listNotifications", () => {
+    const wrapper = shallow(<Notifications displayDrawer />);
+    expect(wrapper.find("NotificationItem").html()).toEqual(
+      '<li data-notification-type="default">No new notification for now</li>'
+    );
+  });
+});
+
+describe("verify that when you pass a list of notifications, the component renders it correctly and with the right number of NotificationItem", () => {
+  beforeEach(() => {
+    latestNotification = getLatestNotification();
+    listNotifications = [
+      { id: 1, type: "default", value: "New course available" },
+      { id: 2, type: "urgent", value: "New resume available" },
+      { id: 3, type: "urgent", html: { __html: latestNotification } },
+    ];
+  });
+
+  it("Notifications renders Notification Items and have the correct html", () => {
+    const wrapper = shallow(
+      <Notifications displayDrawer listNotifications={ listNotifications } />
+    );
+    expect(wrapper.find("NotificationItem").at(0).html()).toEqual(
+      '<li data-notification-type="default">New course available</li>'
+    );
+    expect(wrapper.find("NotificationItem").at(1).html()).toEqual(
+      '<li data-notification-type="urgent">New resume available</li>'
+    );
+    expect(wrapper.find("NotificationItem").at(2).html()).toEqual(
+      `<li data-notification-type="urgent">${latestNotification}</li>`
+    );
+  });
+});
