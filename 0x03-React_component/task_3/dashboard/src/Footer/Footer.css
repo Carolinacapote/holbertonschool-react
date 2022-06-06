@@ -1,0 +1,16 @@
+#footer-margin {
+  position: absolute;
+  bottom: 80px;
+  width: 99%;
+}
+
+.App-footer { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99vw;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  font-family: var(--main-font);
+}
