@@ -28,8 +28,8 @@ class App extends Component {
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
-  handleLogOut(e) {
-    if (e.key === "h" && e.ctrlKey) {
+  handleLogOut(keys) {
+    if (keys.key === "h" && keys.ctrlKey) {
       alert("Logging you out");
       this.props.logOut();
     }
