@@ -25,10 +25,10 @@ const listNotifications = [
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleKeyCombination = this.handleKeyCombination.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
-  handleKeyCombination(e) {
+  handleLogOut(e) {
     if (e.key === "h" && e.ctrlKey) {
       alert("Logging you out");
       this.props.logOut();
@@ -36,11 +36,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyCombination);
+    document.addEventListener("keydown", this.handleLogOut);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyCombination);
+    document.removeEventListener("keydown", this.handleLogOut);
   }
 
   render() {
