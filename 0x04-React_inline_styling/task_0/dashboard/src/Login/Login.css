@@ -1,14 +1,4 @@
 .App-body {
-  padding: 0;
-  font-family: var(--main-font);
-}
-
-input {
-  margin: 0px 10px;
-}
-
-button {
-  background-color: transparent;
-  border: 1px solid gray;
-  border-radius: 4px;
+  padding: 3em;
+  display: flex;
 }

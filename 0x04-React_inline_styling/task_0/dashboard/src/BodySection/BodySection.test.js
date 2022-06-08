@@ -1,9 +1,7 @@
-import { shallow, configure } from "enzyme";
+import { shallow, mount } from "enzyme";
 import React from "react";
 import BodySection from "./BodySection";
-import Adapter from 'enzyme-adapter-react-16';
 
-configure({adapter: new Adapter()});
 describe("<BodySection />", () => {
   it("BodySection renders without crashing", () => {
     const wrapper = shallow(<BodySection />);

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import Notifications from "../Notifications/Notifications";
 import Header from "../Header/Header";
-import BodySection from "../BodySection/BodySection";
-import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import Login from "../Login/Login";
 import CourseList from "../CourseList/CourseList";
 import Footer from "../Footer/Footer";
 import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils";
 import "./App.css";
+import BodySection from "../BodySection/BodySection";
+import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },
@@ -25,33 +25,33 @@ const listNotifications = [
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleLogOut = this.handleLogOut.bind(this);
+    this.handleKeyCombination = this.handleKeyCombination.bind(this);
   }
 
-  handleLogOut(keys) {
-    if (keys.key === "h" && keys.ctrlKey) {
+  handleKeyCombination(e) {
+    if (e.key === "h" && e.ctrlKey) {
       alert("Logging you out");
       this.props.logOut();
     }
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", this.handleLogOut);
+    document.addEventListener("keydown", this.handleKeyCombination);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleLogOut);
+    document.removeEventListener("keydown", this.handleKeyCombination);
   }
 
   render() {
-    const { isLoggedIn, logOut } = this.props;
+    const { isLoggedIn } = this.props;
     return (
       <>
-        <Notifications listNotifications={listNotifications} />
-        <div className="App">
+        <Notifications listNotifications={listNotifications} displayDrawer={true}/>
+        <div className="App-header">
           <Header />
         </div>
-        <body className="App-body">
+        <div className="App-body">
           {!isLoggedIn ? (
             <BodySectionWithMarginBottom title="Log in to continue">
               <Login />
@@ -61,15 +61,10 @@ class App extends Component {
               <CourseList listCourses={listCourses} />
             </BodySectionWithMarginBottom>
           )}
-        </body>
+        </div>
         <BodySection title="News from the School">
-          <p>
-            Dale a tu cuerpo alegría Macarena,
-            Que tu cuerpo es pa' darle alegría y cosa buena. Dale a tu cuerpo alegría, Macarena.
-            Hey Macarena, ay!
-          </p>
+          <p>Lorem ipsum</p>
         </BodySection>
-
         <div className="App-footer">
           <Footer />
         </div>

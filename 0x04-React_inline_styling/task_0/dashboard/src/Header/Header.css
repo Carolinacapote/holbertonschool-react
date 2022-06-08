@@ -1,12 +1,6 @@
 .App-header {
   display: flex;
-  flex-direction: row;
+  color: red;
+  border-bottom: 3px solid red;
   align-items: center;
-  color: var(--main-color);
-  font-family: var(--main-font);
-  font-size: 25px;
-}
-
-.App-logo {
-  height: 30vh;
 }

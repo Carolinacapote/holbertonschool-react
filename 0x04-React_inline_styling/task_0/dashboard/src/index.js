@@ -1,5 +1,10 @@
-
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App/App.js";
-ReactDOM.render(<App />, document.getElementById("root"));
+import App from "./App/App";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App isLoggedIn={true}/>
+  </React.StrictMode>,
+  document.getElementById("root")
+);

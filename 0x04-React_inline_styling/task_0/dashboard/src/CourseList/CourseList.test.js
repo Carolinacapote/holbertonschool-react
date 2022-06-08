@@ -1,12 +1,7 @@
-/**
- * @jest-environment jsdom
- */
-import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from "enzyme";
+import React from "react";
 import CourseList from "./CourseList";
 
-configure({adapter: new Adapter()});
 describe("<CourseList />", () => {
   let listCourses;
   it("CourseList renders without crashing", () => {

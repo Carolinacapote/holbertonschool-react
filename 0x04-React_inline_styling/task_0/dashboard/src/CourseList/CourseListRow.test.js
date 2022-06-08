@@ -1,28 +1,49 @@
-/**
- * @jest-environment jsdom
- */
-import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from "enzyme";
+import React from "react";
 import CourseListRow from "./CourseListRow";
 
-configure({adapter: new Adapter()});
-describe('<CourseListRow />', () => {
-  it('renders a cell with colspan 2 when textSecondCell does not exist', () => {
-    const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="Testing the title"/>);
-    expect(wrapper.find('th').prop("colSpan")).toEqual("2");
+describe("<CourseListRow />", () => {
+  it("CourseListRow renders without crashing", () => {
+    const wrapper = shallow(<CourseListRow textFirstCell="test" />);
+    expect(wrapper.exists()).toEqual(true);
   });
+  it("When isHeader is true renders one cell with colspan = 2 when textSecondCell does not exist", () => {
+    const wrapper = shallow(
+      <CourseListRow isHeader={true} textFirstCell="test" />
+    );
+    wrapper.update();
+    const item = wrapper.find("th");
 
-  it('tests the component renders two cells when textSecondCell is present', () => {
-    const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="Course Name" textSecondCell="Amount of students"/>);
-    const th = wrapper.find("th");
-    expect(th.at(0).text()).toEqual("Course Name");
-    expect(th.at(1).text()).toEqual("Amount of students");
+    expect(item).toHaveLength(1);
+    expect(item.prop("colSpan")).toEqual("2");
   });
+  it("When isHeader is true renders two cells when textSecondCell is present", () => {
+    const wrapper = shallow(
+      <CourseListRow
+        isHeader={true}
+        textFirstCell="test"
+        textSecondCell="second"
+      />
+    );
+    wrapper.update();
+    const item = wrapper.find("th");
 
-  it('tests the component renders correctly two td elements within a tr element', () => {
-    const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="Frontend with Angular" textSecondCell="3"/>);
-    const tr = wrapper.find("tr");
-    expect(tr.children("td")).toHaveLength(2);
+    expect(item).toHaveLength(2);
+    expect(item.first().text()).toEqual("test");
+    expect(item.at(1).text()).toEqual("second");
+  });
+  it("When isHeader is false renders correctly two td elements within a tr element", () => {
+    const wrapper = shallow(
+      <CourseListRow
+        isHeader={false}
+        textFirstCell="test"
+        textSecondCell="second"
+      />
+    );
+    wrapper.update();
+    const item = wrapper.find("tr");
+
+    expect(item).toHaveLength(1);
+    expect(item.children("td")).toHaveLength(2);
   });
 });

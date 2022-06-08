@@ -1,21 +1,16 @@
-/**
- * @jest-environment jsdom
- */
 import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Header from './Header';
-import logoImage from '../assets/holberton-logo.jpg';
+import { shallow } from 'enzyme';
+import Header from "./Header";
 
-configure({adapter: new Adapter()});
-describe('<header />', () => {
-  it('if <header /> renders without crashing', () => {
+describe('<Header />', () => {
+  it('if <Header /> renders without crashing', () => {
     const wrapper = shallow(<Header />);
     expect(wrapper.exists()).toEqual(true);
   });
-  it("renders an image and h1 titles", () => {
+
+  it('if <Header /> renders img and h1 tags', () => {
     const wrapper = shallow(<Header />);
-    expect(wrapper.find("img").length).toEqual(1);
-    expect(wrapper.find("h1").length).toEqual(1);
+    expect(wrapper.find("img")).toHaveLength(1);
+    expect(wrapper.find("h1")).toHaveLength(1);
   });
 });

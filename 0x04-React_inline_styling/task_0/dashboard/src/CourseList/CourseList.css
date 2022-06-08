@@ -1,18 +1,25 @@
-
-table {
-  border: solid 1px rgb(215, 215, 215);
-  width: 90vw;
-  margin: 50px 5vw
+:root {
+  --border-table-color: rgb(170, 170, 170);
 }
 
-td {
-  border: none;
+#CourseList {
+  margin-top: 40px;
+  border: 1px solid var(--border-table-color);
+  border-collapse: collapse;
+  width: 95%;
 }
 
-th {
-  border-bottom: solid 2px rgb(215, 215, 215);
+#CourseList th {
+  border-top: 1px solid var(--border-table-color);
+  border-bottom: 1px solid var(--border-table-color);
+  text-align: left;
+  font-size: 18px;
 }
 
-thead tr:nth-child(2) {
+#CourseList th[colspan="2"] {
+  text-align: center;
+}
+
+#CourseList td {
   text-align: left;
 }

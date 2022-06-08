@@ -1,13 +1,7 @@
-/**
- * @jest-environment jsdom
- */
-import React from 'react';
-import { shallow, configure, mount } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-import WithLogging from './WithLogging';
+import { shallow, mount } from "enzyme";
+import React from "react";
+import WithLogging from "./WithLogging";
 import Login from "../Login/Login";
-
-configure({adapter: new Adapter()});
 
 describe("<WithLogging />", () => {
   it("calls console.log on mount and on unmount with Component when the wrapped element is pure html", () => {

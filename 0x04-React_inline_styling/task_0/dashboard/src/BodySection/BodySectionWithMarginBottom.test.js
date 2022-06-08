@@ -1,12 +1,7 @@
-/**
- * @jest-environment jsdom
- */
-import { shallow, configure } from "enzyme";
+import { shallow, mount } from "enzyme";
 import React from "react";
 import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
-import Adapter from 'enzyme-adapter-react-16';
 
-configure({adapter: new Adapter()});
 describe("<BodySectionWithMarginBottom />", () => {
   it("BodySectionWithMarginBottom renders without crashing", () => {
     const wrapper = shallow(<BodySectionWithMarginBottom />);
